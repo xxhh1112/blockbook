@@ -316,6 +316,13 @@ type AddressFilter struct {
 	OnlyConfirmed bool
 }
 
+// StakingPool holds data about address participation in a staking pool contract
+type StakingPool struct {
+	Contract       string  `json:"contract"`
+	PendingBalance *Amount `json:"pendingBalance"` // pendingBalanceOf method
+	CommonBalance  *Amount `json:"commonBalance"`  // commonBalanceOf method
+}
+
 // Address holds information about address and its transactions
 type Address struct {
 	Paging
@@ -342,6 +349,7 @@ type Address struct {
 	ContractInfo          *bchain.ContractInfo `json:"contractInfo,omitempty"`
 	Erc20Contract         *bchain.ContractInfo `json:"erc20Contract,omitempty"` // deprecated
 	AddressAliases        AddressAliasesMap    `json:"addressAliases,omitempty"`
+	StakingPools          []StakingPool        `json:"stagingPools,omitempty"`
 	// helpers for explorer
 	Filter        string              `json:"-"`
 	XPubAddresses map[string]struct{} `json:"-"`

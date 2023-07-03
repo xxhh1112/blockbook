@@ -109,6 +109,11 @@ export interface FeeStats {
     averageFeePerKb: number;
     decilesFeePerKb: number[];
 }
+export interface StakingPool {
+    contract: string;
+    pendingBalance: string;
+    commonBalance: string;
+}
 export interface ContractInfo {
     type: string;
     contract: string;
@@ -161,6 +166,7 @@ export interface Address {
     contractInfo?: ContractInfo;
     erc20Contract?: ContractInfo;
     addressAliases?: { [key: string]: AddressAlias };
+    stagingPools?: StakingPool[];
 }
 export interface Utxo {
     txid: string;
